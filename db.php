@@ -1,5 +1,5 @@
 <?php
-
+//Esse codigo if aqui permite que voce só execute o db.php via linha de comando, pra que voce nao crie um DB novo toda vez q der f5 na pagina, p evitar dor de cabeça
 if (PHP_SAPI == 'cli-server') {
   exit('Rodar via CLI');
 }
@@ -30,6 +30,22 @@ $schema->create($tabela, function ($table){
   $table->string('fabricante',60);
   $table->date('dt_criacao');
 });
+
+$db->table($tabela)->insert([
+  'titulo' => 'Smartphone Motorola Moto G6 32GB',
+  'descricao' => 'Android oreo - 8.0 tela 5" Octa core',
+  'preco' => 899.00,
+  'fabricante' => 'Motorola',
+  'dt_criacao' => '2019-10-22'
+]);
+
+$db->table($tabela)->insert([
+  'titulo' => 'iPhone X cinza Espacial 64GB',
+  'descricao' => 'Tela 5.8" IOS 12 Camera 12MB',
+  'preco' => 4999.00,
+  'fabricante' => 'Apple',
+  'dt_criacao' => '2020-01-10'
+]);
 
 
 ?>
