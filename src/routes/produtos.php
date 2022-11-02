@@ -8,13 +8,25 @@ use App\Models\Produto;
   //http://localhost:82/api/v1/produtos
 $app->group('/api/v1', function(){
   
+  $this->get('/produtos', function($request, $response){
+    
+    return $response->withJson(['nome' => 'Moto G'] );
+
+  });
+  
+  //Select todos os produtos
+  $this->get('/produtos/lista', function($request, $response){
+    
+    $produtos = Produto::get();
+    return $response->withJson($produtos);
+
+  });
+
   //adiciona produtos
   $this->post('/produtos/adiciona', function($request, $response){
 
     $dados = $request->getParsedBody();
-    
-    //Validar
-    
+    //aqui vc faria a validação
     $produto = Produto::create($dados);
     return $response->withJson($produto );
 
